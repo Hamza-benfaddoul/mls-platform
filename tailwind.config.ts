@@ -1,11 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss"
 
-module.exports = {
+const config = {
+  darkMode: ["class"],
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+	],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -38,7 +40,7 @@ module.exports = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
+          DEFAULT: 'var(--accent)',
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -71,5 +73,7 @@ module.exports = {
       },
     },
   },
-} 
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
 
+export default config
