@@ -15,23 +15,33 @@ import {
 } from '@/components/ui/form'
 
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+
+import Combobox from "@/components/ui/combobox"
+
+import { cn } from '@/lib/utils'
+
 import { Pencil } from 'lucide-react'
+
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { Course } from '@prisma/client'
 
-interface TitleFormProps {
-  initialData: {
-    title: string
-  }
+
+interface CategoryFormProps {
+  initialData: Course
   courseId: string
+  options: { label: string; value: string }[]
 }
 
 const formSchema = z.object({
-  title: z.string().min(1, { message: 'Title is required' }),
+  categoryId: z.string().min(1),
 })
 
-const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
+const CategoryForm = ({
+  initialData,
+  courseId,
+  options,
+}: CategoryFormProps) => {
   const router = useRouter()
   const [isEditing, setEditing] = useState(false)
 
@@ -39,14 +49,16 @@ const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: {
+      categoryId: initialData?.categoryId || '',
+    },
   })
 
   const { isSubmitting, isValid } = form.formState
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}`, values);
+      await axios.patch(`/api/courses/${courseId}`, values)
       toast.success('Course updated')
       toggleEidit()
       router.refresh()
@@ -55,39 +67,49 @@ const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
     }
   }
 
+  const selectedOption = options.find(
+    (option) => option.value === initialData.categoryId,
+  )
+
   return (
     <div className='mt-6 border bg-slate-100 rounded-md p-4'>
       <div className='font-medium flex justify-between items-center'>
-        Course title
+        Course Category
         <Button variant='ghost' onClick={toggleEidit}>
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className='h-4 w-4 mr-2' />
-              Edit title
+              Edit category
             </>
           )}
         </Button>
       </div>
-      {!isEditing && <p className='text-sm mt-2'>{initialData.title}</p>}
+      {!isEditing && (
+        <p
+          className={cn(
+            'text-sm mt-2',
+            !initialData.categoryId && 'text-slate-500 italic',
+          )}
+        >
+          {selectedOption?.label || 'No category'}
+        </p>
+      )}
       {isEditing && (
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className='space-y-4 mt-4'
           >
+
             <FormField
               control={form.control}
-              name='title'
+              name='categoryId'
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web developement'"
-                      {...field}
-                    />
+                  <Combobox options={...options} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -105,4 +127,4 @@ const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
   )
 }
 
-export default TitleForm
+export default CategoryForm
