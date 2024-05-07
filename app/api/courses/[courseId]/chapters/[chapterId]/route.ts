@@ -1,13 +1,16 @@
-import { auth } from '@clerk/nextjs/server'
-import { db } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
-export async function DELETE(
+import { auth } from '@clerk/nextjs/server'
+
+import { db } from '@/lib/db'
+
+export async function PATCH(
   req: Request,
-  { params }: { params: { courseId: string; attachmentId: string } },
+  { params }: { params: { courseId: string; chapterId: string } },
 ) {
   try {
     const { userId } = auth()
+    const { isPublished, ...values } = await req.json()
 
     if (!userId) {
       return new NextResponse('Unauthorized', { status: 401 })
@@ -19,20 +22,24 @@ export async function DELETE(
         userId: userId,
       },
     })
+
     if (!courseOwner) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
-    const attachment = await db.attachment.delete({
+    const chapter = await db.chapter.update({
       where: {
+        id: params.chapterId,
         courseId: params.courseId,
-        id: params.attachmentId,
+      },
+      data: {
+        ...values,
       },
     })
-
-    return NextResponse.json(attachment)
+    // TODO: Handel Video Upload
+    return NextResponse.json(chapter)
   } catch (error) {
-    console.log('[COURSE_ID_ATTACHMENTS]', error)
+    console.log('[COURSE_CHAPTER_ID]', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
