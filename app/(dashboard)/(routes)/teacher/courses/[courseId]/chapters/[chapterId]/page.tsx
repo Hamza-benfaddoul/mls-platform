@@ -1,10 +1,12 @@
 import IconBadge from '@/components/icon-badge'
 import { db } from '@/lib/db'
-import { auth } from '@cleck/nextjs'
-import { ArrowLeft, LayoutDashboard } from 'lucide-react'
+import { ArrowLeft, Eye, LayoutDashboard, Video } from 'lucide-react'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import ChapterTitleFrom from './_components/ChapterTitleForm'
+import ChapterDescriptionForm from './_components/ChapterDescriptionFrom'
+import ChapterAccessFrom from './_components/ChapterAccessFrom'
+import ChapterVideoForm from './_components/ChapterVideoForm'
 
 const ChapterId = async ({
   params,
@@ -59,14 +61,48 @@ const ChapterId = async ({
       {''}
       {/* Chapter Fields */}
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-16'>
+        {/* Grid col 1 */}
         <div className='space-y-4'>
           <div className='flex items-center gap-x-2'>
             <IconBadge icon={LayoutDashboard} />
             <h2 className='text-xl'>Customise your chapter</h2>
           </div>
 
-          {/* ChapterTitleForm*/}
-          <ChapterTitleFrom  initialData={chapter} courseId={params.courseId} chapterId={params.chapterId} />
+          {/*  ChapterTitleForm*/}
+          <ChapterTitleFrom
+            initialData={chapter}
+            courseId={params.courseId}
+            chapterId={params.chapterId}
+          />
+          {/* ChapterDescriptionForm*/}
+          <ChapterDescriptionForm
+            initialData={chapter}
+            courseId={params.courseId}
+            chapterId={params.chapterId}
+          />
+
+          {/* Access Settings*/}
+          <div>
+            <div className='flex items-center gap-x-2'>
+              <IconBadge icon={Eye} />
+              <h2 className='text-xl'>Access Settings</h2>
+            </div>
+            <ChapterAccessFrom
+              initialData={chapter}
+              courseId={params.courseId}
+              chapterId={params.chapterId}
+            />
+          </div>
+        </div>
+
+        {/* Grid col 1 */}
+        {/* start Video */}
+        <div>
+          <div className='flex items-center gap-x-2'>
+            <IconBadge icon={Video} />
+            <h2 className='text-xl'>Add a video</h2>
+          </div>
+          <ChapterVideoForm initialData={chapter} courseId={params.courseId} chapterId={params.chapterId}/>
         </div>
       </div>
     </div>
