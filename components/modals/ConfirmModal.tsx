@@ -11,17 +11,17 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { AlertDialogAction } from '@radix-ui/react-alert-dialog'
+import { Button } from '../ui/button'
 
 interface ConfirmModalProps {
   children: React.ReactNode
   onConfirm: () => void
 }
 
-
 const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild >{children}</AlertDialogTrigger>
+      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you sure?</AlertDialogTitle>
@@ -32,7 +32,7 @@ const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={onConfirm}>
-          Continue
+            <Button>Continue</Button>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
