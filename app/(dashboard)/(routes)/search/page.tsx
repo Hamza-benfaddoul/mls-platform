@@ -1,8 +1,19 @@
+import { db } from '@/lib/db'
+import Categories from './_components/Categories'
 
-export default function Search() {
+const Search = async () => {
+  const categories = await db.category.findMany({
+    orderBy: {
+      name: 'asc',
+    },
+  })
   return (
-    <div>
-      <h1>Search</h1>
+
+    <div className='=p-6'>
+    <Categories
+    items={categories}
+    />
     </div>
   )
 }
+export default Search
