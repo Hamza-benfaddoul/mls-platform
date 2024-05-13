@@ -102,14 +102,13 @@ const CategoryForm = ({
             onSubmit={form.handleSubmit(onSubmit)}
             className='space-y-4 mt-4'
           >
-
             <FormField
               control={form.control}
               name='categoryId'
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                  <Combobox options={...options} {...field} />
+                  <Combobox options={options} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
