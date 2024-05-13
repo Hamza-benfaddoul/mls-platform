@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { type } from 'os'
 
 const backgroundVariants = cva(
-  'rounded-fulll flex items-center justify-center',
+  'rounded-full flex items-center justify-center',
   {
     variants: {
       variant: {
@@ -17,10 +17,10 @@ const backgroundVariants = cva(
         default: 'p-2',
         sm: 'p-1',
       },
-      defaultVariants: {
-        variant: 'default',
-        size: 'default',
-      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
     },
   },
 )
