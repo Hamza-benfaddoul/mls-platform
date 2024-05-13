@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "vite": "vite --host 0.0.0.0",
-    "dev": "docker compose -f database/docker-compose.yml up -d ;next dev --hostname 0.0.0.0 ",
+    "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
