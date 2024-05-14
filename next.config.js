@@ -3,7 +3,6 @@ const nextConfig = {
   images: {
     domains: ['utfs.io'],
   },
-  distDir: './dist', // Changes the build output directory to `./dist/`.
 }
 
 module.exports = nextConfig
