@@ -24,6 +24,20 @@ services:
       - ./db:/var/lib/mysql
     networks:
       - default
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    networks:
+      - default
 
 networks:
   default:
