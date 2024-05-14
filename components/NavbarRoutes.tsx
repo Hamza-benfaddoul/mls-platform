@@ -1,7 +1,7 @@
 'use client'
 
 import { UserButton, useAuth } from '@clerk/nextjs'
-import { usePathname } from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import {isTeacher} from '@/lib/teacher'
 
 import { Button } from '@/components/ui/button'
@@ -13,6 +13,8 @@ const NavbarRoutes = () => {
   const pathname = usePathname()
   const {userId} = useAuth();
 
+  if(!userId) return redirect('/')
+    
 
   const isTeatcherPage = pathname?.startsWith('/teacher')
   const isStudentPage = pathname?.startsWith('/courses')
