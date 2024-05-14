@@ -13,7 +13,7 @@ const NavbarRoutes = () => {
   const pathname = usePathname()
   const {userId} = useAuth();
 
-  if(!userId) return redirect('/')
+  if(!userId) return redirect('/sign-in')
     
 
   const isTeatcherPage = pathname?.startsWith('/teacher')

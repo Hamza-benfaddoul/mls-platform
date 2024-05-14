@@ -7,7 +7,7 @@ import Chart from './_components/Chart'
 
 const Analytics = async () => {
   const { userId } = auth()
-  if (!userId) return redirect('/')
+  if (!userId) return redirect('/sign-in')
   const { data, totalRevenue, totalSales } = await getAnalytics(userId)
 
   return (

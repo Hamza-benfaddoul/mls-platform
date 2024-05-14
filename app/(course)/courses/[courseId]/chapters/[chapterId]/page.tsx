@@ -16,7 +16,7 @@ const ChapterId = async ({
   params: { courseId: string; chapterId: string }
 }) => {
   const { userId } = auth()
-  if (!userId) redirect('/')
+  if (!userId) redirect('/sign-in')
 
   const {
     course,

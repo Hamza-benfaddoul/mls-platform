@@ -24,7 +24,7 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth()
 
   if (!userId) {
-    redirect('/')
+    redirect('/sign-in')
   }
 
   const course = await db.course.findUnique({

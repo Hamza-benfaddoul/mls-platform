@@ -17,7 +17,7 @@ const CourseLayout = async ({
 }) => {
   const { userId } = auth()
 
-  if (!userId) return redirect('/')
+  if (!userId) return redirect('/sign-in')
 
   const course = await db.course.findUnique({
     where: {
