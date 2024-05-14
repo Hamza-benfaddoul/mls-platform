@@ -19,11 +19,10 @@ import { Input } from '@/components/ui/input'
 import { Pencil } from 'lucide-react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { Course } from '@prisma/client'
 
 interface TitleFormProps {
-  initialData: {
-    title: string
-  }
+  initialData: Course;
   courseId: string
 }
 
@@ -39,7 +38,10 @@ const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues:{
+      title: initialData?.title || ''
+    } 
+
   })
 
   const { isSubmitting, isValid } = form.formState
