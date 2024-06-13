@@ -39,14 +39,13 @@ const CategoryItem = ({ label, value, icon: Icon }: CategoryItemProps) => {
 
   return (
     <button
-    onClick={onClick}
+      onClick={onClick}
       className={cn(
-        'py-2 px-3 text-xm border border-slate-200 flex items-center rounded-full gap-x-1 hover:border-sky-700 transition',
-        isSelected && 'border-sky-700 bg-sky-200/20 text-sky-800',
+        'py-2 px-3 text-xs font-semibold border border-slate-200 flex items-center rounded-lg gap-x-1 hover:border-primary transition',
+        isSelected && 'border-primary/50 bg-primary/20 text-primary',
       )}
       type='button'
     >
-      {Icon && <Icon size={20} />}
       <div className='truncate'>{label}</div>
     </button>
   )

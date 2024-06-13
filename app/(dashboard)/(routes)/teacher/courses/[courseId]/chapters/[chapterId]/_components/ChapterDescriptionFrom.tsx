@@ -67,7 +67,7 @@ const ChapterDescriptionForm = ({
   }
 
   return (
-    <div className='mt-6 border bg-slate-100 rounded-md p-4'>
+    <div className='mt-6 border bg-white rounded-md p-4'>
       <div className='font-medium flex justify-between items-center'>
         Chapter Description
         <Button variant='ghost' onClick={toggleEidit}>

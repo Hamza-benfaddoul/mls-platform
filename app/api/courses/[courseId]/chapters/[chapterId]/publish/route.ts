@@ -39,10 +39,10 @@ export async function PATCH(
 
     if (
       !chapter ||
-      !MuxData ||
       !chapter.title ||
-      !chapter.description ||
-      !chapter.videoUrl
+      !chapter.description
+      /* !chapter.videoUrl ||
+      !MuxData || */
     ) {
       return new NextResponse('Messing required fields', { status: 400 })
     }

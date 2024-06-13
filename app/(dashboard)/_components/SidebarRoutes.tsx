@@ -2,19 +2,43 @@
 
 import React from 'react'
 import SidebarItem from './SidebarItem'
-import { Layout, Compass, BarChart, List } from 'lucide-react'
+import {
+  Layout,
+  Compass,
+  BarChart,
+  List,
+  UserRound,
+  Settings,
+  Tv2,
+  CircleHelp,
+} from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
 const guestRoutes = [
   {
-    icon: Layout,
-    label: 'dashboard',
+    icon: BarChart,
+    label: 'Analytics',
     href: '/',
   },
   {
-    icon: Compass,
-    label: 'Browse',
+    icon: Tv2,
+    label: 'AR/VR Training',
     href: '/search',
+  },
+  {
+    icon: UserRound,
+    label: 'Profile',
+    href: '/profile',
+  },
+  {
+    icon: Settings,
+    label: 'Settings',
+    href: '/settings',
+  },
+  {
+    icon: CircleHelp,
+    label: 'Help',
+    href: '/help',
   },
 ]
 
@@ -32,14 +56,13 @@ const TeacherRoutes = [
 ]
 
 const SidebarRoutes = () => {
-  const pathname = usePathname();
-  const isTeacherPage = pathname?.includes('/teacher');
+  const pathname = usePathname()
+  const isTeacherPage = pathname?.includes('/teacher')
 
-  const routes = isTeacherPage ? TeacherRoutes : guestRoutes;
-
+  const routes = isTeacherPage ? TeacherRoutes : guestRoutes
 
   return (
-    <div className='flex flex-col w-full'>
+    <div className='flex p-2 gap-2 flex-col w-full'>
       {routes.map((route) => (
         <SidebarItem
           key={route.href}

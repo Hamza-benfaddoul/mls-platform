@@ -21,18 +21,23 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Chapter, Course } from '@prisma/client'
 import { Input } from '@/components/ui/input'
-import ChaptersList from './ChaptersList'
+import TrainingList from './TrainingList'
+import { Textarea } from '@/components/ui/textarea'
 
-interface ChaptersFromProps {
-  initialData: Course & { chapters: Chapter[] }
+interface TrainingDetaisFromProps {
+  initialData: Course & { trainingDetails: [] }
   courseId: string
 }
 
 const formSchema = z.object({
-  title: z.string().min(1),
+  property: z.string().min(1),
+  value: z.string().min(1),
 })
 
-const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
+const TrainingDetaisFrom = ({
+  initialData,
+  courseId,
+}: TrainingDetaisFromProps) => {
   const router = useRouter()
   const [isCreating, setCreating] = useState(false)
   const [isUpdating, setUpdating] = useState(false)
@@ -42,7 +47,8 @@ const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: '',
+      property: '',
+      value: '',
     },
   })
 
@@ -50,8 +56,8 @@ const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post(`/api/courses/${courseId}/chapters`, values)
-      toast.success('Chapter created')
+      await axios.post(`/api/courses/${courseId}/trainingDetails`, values)
+      toast.success('Training Detais created')
       toggleCreating()
       router.refresh()
     } catch {
@@ -62,7 +68,7 @@ const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
   const onReorder = async (updateData: { id: string; position: number }[]) => {
     try {
       setUpdating(true)
-      await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
+      await axios.put(`/api/courses/${courseId}/trainingDetails/reorder`, {
         list: updateData,
       })
       toast.success('Chapter reordered')
@@ -86,14 +92,14 @@ const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
         </div>
       )}
       <div className='font-medium flex justify-between items-center'>
-        Course chapters
+        Training Details
         <Button variant='ghost' onClick={toggleCreating}>
           {isCreating ? (
             <>Cancel</>
           ) : (
             <>
               <PlusCircle className='h-4 w-4 mr-2' />
-              Add a chapter
+              Add Details
             </>
           )}
         </Button>
@@ -106,13 +112,30 @@ const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
           >
             <FormField
               control={form.control}
-              name='title'
+              name='property'
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Introduction to the course'"
+                      placeholder="e.g. 'Duration'"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='value'
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Textarea
+                      disabled={isSubmitting}
+                      placeholder="e.g. '15 minutes'"
                       {...field}
                     />
                   </FormControl>
@@ -127,17 +150,13 @@ const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
         </Form>
       )}
       {!isCreating && (
-        <div
-          className={cn(
-            'text-sm mt-2',
-            !initialData.chapters.length && 'text-slate-500 italic',
-          )}
-        >
-          {!initialData.chapters.length && 'No chapters yet'}
-          <ChaptersList
+        <div className={cn('text-sm mt-2')}>
+          {!initialData.trainingDetails.length && 'No chapters yet'}
+          <TrainingList
+            courseId={courseId}
             onEdit={onEdit}
             onReorder={onReorder}
-            items={initialData.chapters || []}
+            items={initialData.trainingDetails || []}
           />
         </div>
       )}
@@ -150,4 +169,4 @@ const ChaptersFrom = ({ initialData, courseId }: ChaptersFromProps) => {
   )
 }
 
-export default ChaptersFrom
+export default TrainingDetaisFrom

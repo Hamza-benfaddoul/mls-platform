@@ -29,7 +29,7 @@ const ChapterId = async ({
     redirect('/')
   }
 
-  const requiredFields = [chapter.title, chapter.description, chapter.videoUrl]
+  const requiredFields = [chapter.title, chapter.description] /* , chapter.videoUl] */
 
   const totalFields = requiredFields.length
   const completedFields = requiredFields.filter(Boolean).length
@@ -114,7 +114,7 @@ const ChapterId = async ({
 
           {/* Grid col 1 */}
           {/* start Video */}
-          <div>
+          {/* <div>
             <div className='flex items-center gap-x-2'>
               <IconBadge icon={Video} />
               <h2 className='text-xl'>Add a video</h2>
@@ -124,7 +124,7 @@ const ChapterId = async ({
               courseId={params.courseId}
               chapterId={params.chapterId}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

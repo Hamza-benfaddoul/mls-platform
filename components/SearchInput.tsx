@@ -1,47 +1,94 @@
-'use client';
+'use client'
 
-import { Search } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@/components/ui/form'
+
+import { Search, X } from 'lucide-react'
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
-import qs from 'query-string';
-
+import qs from 'query-string'
 
 import { Input } from '@/components/ui/input'
-import { useDebounce } from '@/hooks/use-debounce'
+
+import * as z from 'zod'
+
+const formSchema = z.object({
+  title: z.string(),
+})
 
 const SearchInput = () => {
-  const [value, setValue] = useState('')
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
 
-  const debouncedValue = useDebounce(value);
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
+  const currentCategoryId = searchParams.get('categoryId')
 
-  const currentCategoryId = searchParams.get('categoryId');
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: '',
+    },
+  })
 
-  useEffect(() => {
-      const url = qs.stringifyUrl({
-          url: pathname,
-          query: {
-              categoryId: currentCategoryId,
-              title: debouncedValue
-            }
-        },{skipEmptyString: true, skipNull: true})
-      router.push(url)
-    },[debouncedValue, currentCategoryId, pathname])
-
-
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const url = qs.stringifyUrl(
+      {
+        url: pathname,
+        query: {
+          categoryId: currentCategoryId,
+          title: values.title,
+        },
+      },
+      { skipEmptyString: true, skipNull: true },
+    )
+    form.setFocus('title')
+    router.push(url)
+  }
 
   return (
-    <div className='relative'>
-      <Search className='absolute top-3 left-3 text-slate-600 h-4 w-4' />
-      <Input
-      onChange= {(e) => setValue(e.target.value) }
-        value={value}
-        className='w-full md:w-[300px] pl-9 rounded-full bg-slate-100 focus-visible:ring-slate-200'
-        placeholder='Search for a course'
-      />
-    </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='flex '>
+        <FormField
+          control={form.control}
+          name='title'
+          render={({ field }) => (
+            <FormItem className='flex-1'>
+              <FormControl>
+                <div className='relative'>
+                  <Input
+                    className='w-full lg:w-[300px]  pl-9  bg-white'
+                    placeholder='Search for a course'
+                    {...field}
+                  />
+                  <X
+                    onClick={() => {
+                      form.reset({ title: '' })
+                      router.push(pathname)
+                    }}
+                    className='absolute top-3 right-3 h-4 w-4'
+                  />
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type='submit'
+          className='h-10 rounded-none rounded-r-md  p-0 w-10'
+        >
+          <Search className=' w-4 h-4 p-0  text-white ' />
+        </Button>
+      </form>
+    </Form>
   )
 }
 

@@ -41,7 +41,7 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
   }
 
   return (
-    <div className='mt-6 border bg-slate-100 rounded-md p-4'>
+    <div className='mt-6 border bg-white rounded-md p-4'>
       <div className='font-medium flex justify-between items-center'>
         Course Image
         <Button variant='ghost' onClick={toggleEidit}>
@@ -66,7 +66,7 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
             <ImageIcon className='h-10 w-10 text-slate-500' />
           </div>
         ) : (
-          <div className='relative aspect-video  mt-2'>
+          <div className='relative aspect-video   mt-2'>
             <Image
               alt='Upload'
               fill

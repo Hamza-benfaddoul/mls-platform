@@ -26,21 +26,22 @@ const CourseCard = ({
 }: CourseCardProps) => {
   return (
     <Link href={`/courses/${id}`}>
-      <div className='group hover:shadow-sm trasition overflow-hidden roundend-lg border p-3 h-full'>
-        <div className='relative w-full aspect-video rounded-md overflow-hidden '>
+      <div className='group bg-white rounded-lg hover:shadow-sm trasition overflow-hidden roundend-lg border p-3 h-full'>
+        <div className='relative w-full aspect-video  border overflow-hidden '>
           <Image fill className='object-cover' src={imageUrl} alt={title} />
         </div>
         <div className='flex flex-col pt-2'>
-          <div className='text-lg md:text-base font-medium group-hover:text-sky-700 trasition line-clamp-2'>
+          <div className='text-lg md:text-base font-medium group-hover:text-primary trasition line-clamp-2'>
             {title}
           </div>
           <p className='text-xs text-muted-foreground '>{category}</p>
           <div className='my-3 flex items-center gap-x-2 text-sm md:text-xs'>
             <div className='flex items-center gap-x-1 text-slate-500 '>
+              {/*
               <IconBadge size='sm' icon={BookOpen} />
-              <span>
+               <span>
                 {chaptersLength} {chaptersLength === 1 ? 'Chapter' : 'Chapters'}
-              </span>
+              </span> */}
             </div>
           </div>
           {progress !== null ? (

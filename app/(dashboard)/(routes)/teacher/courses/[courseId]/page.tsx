@@ -19,6 +19,7 @@ import AttachmentFrom from './_components/AttachmentForm'
 import ChaptersFrom from './_components/ChaptersFrom'
 import Banner from '@/components/banner'
 import CourseAction from './_components/CourseActions'
+import TrainingDetaisFrom from './_components/TrainingDetailsFrom'
 
 const CourseId = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth()
@@ -33,7 +34,7 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
       userId,
     },
     include: {
-      chapters: {
+      trainingDetails: {
         orderBy: {
           position: 'asc',
         },
@@ -62,7 +63,7 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
     course.imageUrl,
     course.price,
 /*     course.categoryId, */
-    course.chapters.some((chapter) => chapter.isPublished),
+/*     course.chapters.some((chapter) => chapter.isPublished), */
   ]
 
   const totalFields = requireFields.length
@@ -112,12 +113,20 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
             />
           </div>
           <div className='space-y-6'>
-            <div>
+            {/* <div>
               <div className='flex items-center gap-x-2'>
                 <IconBadge icon={ListChecks} />
                 <h2 className='text-xl'>Course chapters</h2>
               </div>
               <ChaptersFrom initialData={course} courseId={course.id} />
+            </div> */}
+
+            <div>
+              <div className='flex items-center gap-x-2'>
+                <IconBadge icon={ListChecks} />
+                <h2 className='text-xl'>Training Detais</h2>
+              </div>
+              <TrainingDetaisFrom initialData={course} courseId={course.id} />
             </div>
             <div>
               <div className='flex items-center gap-x-2'>

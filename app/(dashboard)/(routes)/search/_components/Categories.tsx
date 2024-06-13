@@ -1,5 +1,6 @@
 'use client'
 import { Category } from '@prisma/client'
+import {usePathname} from 'next/navigation'
 
 import {
   FcEngineering,
@@ -31,16 +32,18 @@ const iconMap: Record<Category['name'], IconType> = {
 }
 
 const Categories = ({ items }: CategoriesProps) => {
+  const pathname = usePathname().slice(1);
   return (
-    <div className='flex items-center gap-x-2 overflow-x-auto pb-2'>
-      {items.map((item) => (
+    <div className='flex capetalize items-center gap-x-2 overflow-x-auto pb-2'>
+    {pathname}
+      {/* tems.map((item) => (
         <CategoryItem
           key={item.id}
           label={item.name}
           icon={iconMap[item.name]}
           value={item.id}
         />
-      ))}
+      )) */} 
     </div>
   )
 }

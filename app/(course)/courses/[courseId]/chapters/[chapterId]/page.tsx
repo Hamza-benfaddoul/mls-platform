@@ -1,5 +1,10 @@
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
+import { db } from '@/lib/db'
+
+import Image from 'next/image'
+
+import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 import { getChapter } from '@/actions/getChapter'
 import Banner from '@/components/banner'
@@ -7,8 +12,9 @@ import VideoPlayer from './_components/VideoPlayer'
 import CourseEnrollButton from './_components/CourseEnrollButton'
 import { Separator } from '@/components/ui/separator'
 import Preview from '@/components/preview'
-import { File } from 'lucide-react'
+import { File, CirclePlay, Clock, WifiOff } from 'lucide-react'
 import CourseProgressButton from './_components/CourseProgressButton'
+import { Button } from '@/components/ui/button'
 
 const ChapterId = async ({
   params,
@@ -20,86 +26,105 @@ const ChapterId = async ({
 
   const {
     course,
-    chapter,
-    muxData,
+    /* chapter,
     attachments,
-    nextChapter,
+    nextChapter, 
     userProgress,
-    purchase,
+    purchase, */
   } = await getChapter({
     userId,
-    chapterId: params.chapterId,
+/*     chapterId: params.chapterId, */
     courseId: params.courseId,
   })
-  if (!chapter || !course) redirect('/')
 
-  const isLocked = !chapter.isFree && !purchase
-  const completeOnEnd = !!purchase && !userProgress?.isCompleted
+
+const trianingDetails: { property: string; value: string }[] =  await db.trainingDetails.findMany({
+    where: {
+      courseId: params.courseId,
+    },
+    orderBy: {
+      position: 'asc',
+    },
+  })
+  console.log(course)
+  if (!course) redirect('/')
+
+/*   const isLocked = !chapter.isFree && !purchase */
+/*   const completeOnEnd = !!purchase && !userProgress?.isCompleted */
 
   return (
     <div>
-      {userProgress?.isCompleted && (
-        <Banner variant='success' label='You already completed this chapter.' />
-      )}
-
-      {isLocked && (
-        <Banner
-          variant='warning'
-          label='You need to purchase this course to watch this chapter.'
-        />
-      )}
-      <div className='felx flex-col max-w-4xl mx-auto pb-20'>
-        <div className='p-4'>
-          <VideoPlayer
-            chapterId={params.chapterId}
-            title={chapter.title}
-            courseId={params.courseId}
-            nextChapterId={nextChapter?.id}
-            playbackId={muxData?.playbackId!}
-            completeOnEnd={completeOnEnd}
-            isLocked={isLocked}
-          />
+      <div className='felx bg-gray-200  flex-col max-w-7xl mx-auto pb-20'>
+        <div className='w-full grid grid-cols-1 lg:grid-cols-2'>
+          <div className='p-4 '>
+            {/*<VideoPlayer 
+              chapterId={params.chapterId}
+              title={chapter.title}
+              courseId={params.courseId}
+              nextChapterId={nextChapter?.id}
+              playbackId={muxData?.playbackId!}
+              completeOnEnd={completeOnEnd}
+              isLocked={isLocked}
+            /> */}
+            <Image
+              src={course?.imageUrl || '/courseImage.png'}
+              width={450}
+              height={800}
+              alt='Image'
+              className='rounded-md shadow border w-full h-full object-cover'
+            />
+          </div>
+          <div>
+            <div className='p-4 grid grid-rows-4 gap-y-2'>
+              <h2 className='text-2xl font-semibold mb-2 capitalize '>
+                {course.title}
+              </h2>
+              <div className='flex gap-x-4  '>
+                <span className='flex items-center gap-x-1'>
+                  <Clock className='h-5 w-5  text-muted-foreground' />
+                  15 min
+                </span>
+                <span className='flex items-center gap-x-1'>
+                  <WifiOff className='h-5 w-5 text-muted-foreground' />
+                  No internet required
+                </span>
+              </div>
+              <div className='flex w-full items-center gap-x-3  '>
+                {/* <CourseProgressButton
+                  chapterId={params.chapterId}
+                  courseId={params.courseId}
+                  isCompleted={!!userProgress?.isCompleted}
+                  nextChapterId={nextChapter?.id}
+                /> */}
+                <Button>Let's start</Button>
+                <Button variant='link' className='flex items-center'>
+                  <CirclePlay  className='w-5 h-5 mr-1'/>
+                  <span className='text-sm '>Watch preview</span>
+                  </Button>
+              </div>
+              <p className='text-sm text-muted-foreground '>
+                {course.description}
+              </p>
+            </div>
+          </div>
         </div>
         <div>
-          <div className='p-4 flex flex-col md:flex-row justify-between items-center'>
-            <h2 className='text-2xl font-semibold mb-2 '>{chapter.title}</h2>
-            {purchase ? (
-              <CourseProgressButton
-                chapterId={params.chapterId}
-                courseId={params.courseId}
-                isCompleted={!!userProgress?.isCompleted}
-                nextChapterId={nextChapter?.id}
-              />
-            ) : (
-              <CourseEnrollButton
-                courseId={params.courseId}
-                price={course.price!}
-              />
-            )}
-          </div>
-          <Separator />
-          <div>
-            <Preview value={chapter.description!} />
-          </div>
-          {!!attachments.length && (
-            <>
-              <Separator />
-              <div className='p-4 '>
-                {attachments.map((attachment) => (
-                  <a
-                    key={attachment.id}
-                    href={attachment.url}
-                    target='_blank'
-                    className='flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline'
-                  >
-                    <File />
-                    <p className='line-clamp-1'>{attachment.name}</p>
-                  </a>
-                ))}
-              </div>
-            </>
-          )}
+          {/*           <Preview value={chapter.description!} /> */}
+          <h2 className='text-xl font-semibold p-4'>Training details</h2>
         </div>
+        <>
+          <div className='p-4 '>
+            {trianingDetails.map((attachment, index) => (
+              <div
+                key={index}
+                className={`grid grid-cols-2 items-center p-3 w-full rounded  text-black ${index % 2 === 0 ? 'bg-white' : ''} `}
+              >
+                <p className=''>{attachment.property}</p>
+                <p className=''>{attachment.value}</p>
+              </div>
+            ))}
+          </div>
+        </>
       </div>
     </div>
   )
