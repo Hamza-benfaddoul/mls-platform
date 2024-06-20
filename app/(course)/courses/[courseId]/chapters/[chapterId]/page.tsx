@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
 
@@ -15,14 +14,15 @@ import Preview from '@/components/preview'
 import { File, CirclePlay, Clock, WifiOff } from 'lucide-react'
 import CourseProgressButton from './_components/CourseProgressButton'
 import { Button } from '@/components/ui/button'
+import { currentUser } from '@/lib/auth'
 
 const ChapterId = async ({
   params,
 }: {
   params: { courseId: string; chapterId: string }
 }) => {
-  const { userId } = auth()
-  if (!userId) redirect('/sign-in')
+  const user = await currentUser();
+  if (!user) redirect('/sign-in')
 
   const {
     course,
@@ -32,7 +32,7 @@ const ChapterId = async ({
     userProgress,
     purchase, */
   } = await getChapter({
-    userId,
+    userId: user!.userId,
 /*     chapterId: params.chapterId, */
     courseId: params.courseId,
   })
@@ -56,7 +56,7 @@ const trianingDetails: { property: string; value: string }[] =  await db.trainin
     <div>
       <div className='felx bg-gray-200  flex-col max-w-7xl mx-auto pb-20'>
         <div className='w-full grid grid-cols-1 lg:grid-cols-2'>
-          <div className='p-4 '>
+          <div className='p-4   '>
             {/*<VideoPlayer 
               chapterId={params.chapterId}
               title={chapter.title}
@@ -69,7 +69,7 @@ const trianingDetails: { property: string; value: string }[] =  await db.trainin
             <Image
               src={course?.imageUrl || '/courseImage.png'}
               width={450}
-              height={800}
+              height={250}
               alt='Image'
               className='rounded-md shadow border w-full h-full object-cover'
             />

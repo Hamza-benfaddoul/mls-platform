@@ -1,24 +1,16 @@
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-
-import  {auth}  from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation'
-
-
 import { columns } from './_components/columns'
 import { DataTable } from './_components/data-table'
 import { db } from '@/lib/db'
 
-const Courses = async () => {
-  const { userId } = auth();
+import { currentUser } from '@/lib/auth'
 
-  if (!userId) {
-    return redirect('/sign-in')
-  }
+const Courses = async () => {
+  const user = await currentUser()
+  if (!user) return
 
   const courses = await db.course.findMany({
     where: {
-      userId,
+      userId: user.userId,
     },
     orderBy: {
       createdAt: 'desc',

@@ -1,0 +1,282 @@
+ [31m[1m⨯[22m[39m app/test/page.tsx (5:29) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:14:80)
+    at stringify (<anonymous>)
+    at AsyncLocalStorage.run (node:async_hooks:346:14)
+digest: "1493144131"
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 5 |[39m   [36mconst[39m session [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 6 |[39m[0m
+[0m [90m 7 |[39m   [36mreturn[39m ([0m
+[0m [90m 8 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:29) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:80)
+    at stringify (<anonymous>)
+digest: "1082363624"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m session [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m[0m
+[0m [90m 6 |[39m   [36mreturn[39m ([0m
+[0m [90m 7 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:29) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:80)
+    at stringify (<anonymous>)
+digest: "1082363624"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m session [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m[0m
+[0m [90m 6 |[39m   [36mreturn[39m ([0m
+[0m [90m 7 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:29) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:80)
+    at stringify (<anonymous>)
+digest: "1082363624"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m session [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m[0m
+[0m [90m 6 |[39m   [36mreturn[39m ([0m
+[0m [90m 7 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:29) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:80)
+    at stringify (<anonymous>)
+digest: "1082363624"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m session [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m[0m
+[0m [90m 6 |[39m   [36mreturn[39m ([0m
+[0m [90m 7 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:28) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:81)
+    at stringify (<anonymous>)
+digest: "1731245001"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m {data} [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                            [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m[0m
+[0m [90m 6 |[39m   [36mreturn[39m ([0m
+[0m [90m 7 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:28) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:81)
+    at stringify (<anonymous>)
+digest: "1731245001"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m {data} [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                            [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m[0m
+[0m [90m 6 |[39m   [36mreturn[39m ([0m
+[0m [90m 7 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:28) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:81)
+    at stringify (<anonymous>)
+digest: "1731245001"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m {data} [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                            [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+[0m [90m 7 |[39m   [36mreturn[39m ([0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (4:28) @ useSession
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession) is not a function
+    at page (./app/test/page.tsx:11:81)
+    at stringify (<anonymous>)
+digest: "1731245001"
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [36mconst[39m {data} [33m=[39m useSession()[33m;[39m[0m
+[0m [90m   |[39m                            [31m[1m^[22m[39m[0m
+[0m [90m 5 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+[0m [90m 7 |[39m   [36mreturn[39m ([0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m app/test/page.tsx (6:10) @ accessToken
+ [31m[1m⨯[22m[39m TypeError: Cannot destructure property 'accessToken' of 'data' as it is undefined.
+    at page (./app/test/page.tsx:12:13)
+digest: "2233242261"
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m [90m 5 |[39m   [36mconst[39m {data} [33m=[39m useSession()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m   |[39m          [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m   [36mreturn[39m ([0m
+[0m [90m 9 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {accessToken}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m app/test/page.tsx (6:10) @ accessToken
+ [31m[1m⨯[22m[39m TypeError: Cannot destructure property 'accessToken' of 'data' as it is undefined.
+    at page (./app/test/page.tsx:12:13)
+digest: "2233242261"
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m [90m 5 |[39m   [36mconst[39m {data} [33m=[39m useSession()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m   |[39m          [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m   [36mreturn[39m ([0m
+[0m [90m 9 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {accessToken}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (6:10) @ accessToken
+ [31m[1m⨯[22m[39m TypeError: Cannot destructure property 'accessToken' of 'data' as it is undefined.
+    at page (./app/test/page.tsx:12:13)
+digest: "2233242261"
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m [90m 5 |[39m   [36mconst[39m {session[33m:[39m data} [33m=[39m useSession()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m   |[39m          [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m   [36mreturn[39m ([0m
+[0m [90m 9 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {accessToken}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (6:25) @ data
+ [31m[1m⨯[22m[39m ReferenceError: data is not defined
+    at page (./app/test/page.tsx:12:29)
+    at stringify (<anonymous>)
+digest: "3285610011"
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m [90m 5 |[39m   [36mconst[39m {session} [33m=[39m auth()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m   |[39m                         [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m   [36mreturn[39m ([0m
+[0m [90m 9 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {accessToken}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (6:25) @ data
+ [31m[1m⨯[22m[39m ReferenceError: data is not defined
+    at page (./app/test/page.tsx:12:29)
+    at stringify (<anonymous>)
+digest: "3285610011"
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m [90m 5 |[39m   [36mconst[39m {session} [33m=[39m auth()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m   |[39m                         [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m   [36mreturn[39m ([0m
+[0m [90m 9 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {accessToken}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m app/test/page.tsx (6:10) @ accessToken
+ [31m[1m⨯[22m[39m TypeError: Cannot destructure property 'accessToken' of 'data' as it is undefined.
+    at page (./app/test/page.tsx:12:13)
+    at stringify (<anonymous>)
+digest: "4095694401"
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m [90m 5 |[39m   [36mconst[39m {session[33m:[39m data} [33m=[39m auth()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m   |[39m          [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m   [36mreturn[39m ([0m
+[0m [90m 9 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {accessToken}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (6:10) @ accessToken
+ [31m[1m⨯[22m[39m TypeError: Cannot destructure property 'accessToken' of 'data' as it is undefined.
+    at page (./app/test/page.tsx:12:13)
+    at stringify (<anonymous>)
+digest: "4095694401"
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m [90m 5 |[39m   [36mconst[39m {session[33m:[39m data} [33m=[39m auth()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m   [36mconst[39m {accessToken} [33m=[39m data[33m;[39m[0m
+[0m [90m   |[39m          [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m   [36mreturn[39m ([0m
+[0m [90m 9 |[39m     [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {accessToken}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m ./app/test/page.tsx:1:1
+[31m[1mModule not found[22m[39m: Can't resolve '[32mauth[39m'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { auth } [36mfrom[39m [32m'auth'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { useSession } [36mfrom[39m [32m'next-auth/react'[39m[0m
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ [31m[1m⨯[22m[39m ./app/test/page.tsx:1:1
+[31m[1mModule not found[22m[39m: Can't resolve '[32m@auth[39m'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { auth } [36mfrom[39m [32m'@auth'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { useSession } [36mfrom[39m [32m'next-auth/react'[39m[0m
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ [33m[1m⚠[22m[39m ./app/test/page.tsx
+Attempted import error: 'auth' is not exported from 'next-auth' (imported as 'auth').
+
+Import trace for requested module:
+./app/test/page.tsx
+ [31m[1m⨯[22m[39m app/test/page.tsx (5:27) @ auth
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth__WEBPACK_IMPORTED_MODULE_1__.auth) is not a function
+    at page (./app/test/page.tsx:11:72)
+    at stringify (<anonymous>)
+digest: "3342455269"
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 5 |[39m   [36mconst[39m { session } [33m=[39m auth()[0m
+[0m [90m   |[39m                           [31m[1m^[22m[39m[0m
+[0m [90m 6 |[39m[0m
+[0m [90m 7 |[39m   [36mreturn[39m [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {session}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m [90m 8 |[39m }[0m
+ [31m[1m⨯[22m[39m app/test/page.tsx (5:27) @ auth
+ [31m[1m⨯[22m[39m TypeError: (0 , next_auth__WEBPACK_IMPORTED_MODULE_1__.auth) is not a function
+    at page (./app/test/page.tsx:11:72)
+    at stringify (<anonymous>)
+digest: "3342455269"
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 5 |[39m   [36mconst[39m { session } [33m=[39m auth()[0m
+[0m [90m   |[39m                           [31m[1m^[22m[39m[0m
+[0m [90m 6 |[39m[0m
+[0m [90m 7 |[39m   [36mreturn[39m [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {session}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m [90m 8 |[39m }[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [31m[1m⨯[22m[39m ./app/test/page.tsx:1:1
+[31m[1mModule not found[22m[39m: Can't resolve '[32m@auth[39m'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { auth } [36mfrom[39m [32m'@auth'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { useSession } [36mfrom[39m [32m'next-auth/react'[39m[0m
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ [31m[1m⨯[22m[39m ./app/test/page.tsx:1:1
+[31m[1mModule not found[22m[39m: Can't resolve '[32m@auth[39m'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { auth } [36mfrom[39m [32m'@auth'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { useSession } [36mfrom[39m [32m'next-auth/react'[39m[0m
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ [33m[1m⚠[22m[39m ./app/test/page.tsx
+Attempted import error: 'auth' is not exported from '@/auth.config' (imported as 'auth').
+
+Import trace for requested module:
+./app/test/page.tsx
+ [31m[1m⨯[22m[39m app/test/page.tsx (5:27) @ auth
+ [31m[1m⨯[22m[39m TypeError: (0 , _auth_config__WEBPACK_IMPORTED_MODULE_1__.auth) is not a function
+    at page (./app/test/page.tsx:11:75)
+    at stringify (<anonymous>)
+    at AsyncLocalStorage.run (node:async_hooks:346:14)
+digest: "3412645228"
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m [36mconst[39m page [33m=[39m () [33m=>[39m {[0m
+[0m[31m[1m>[22m[39m[90m 5 |[39m   [36mconst[39m { session } [33m=[39m auth()[0m
+[0m [90m   |[39m                           [31m[1m^[22m[39m[0m
+[0m [90m 6 |[39m[0m
+[0m [90m 7 |[39m   [36mreturn[39m [33m<[39m[33mdiv[39m[33m>[39mpage[33m:[39m {session}[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m [90m 8 |[39m }[0m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.

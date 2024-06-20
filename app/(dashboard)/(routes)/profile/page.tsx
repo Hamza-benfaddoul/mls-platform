@@ -1,10 +1,10 @@
-import { UserButton } from '@clerk/nextjs'
+import { UserButton } from '@/app/components/auth/user-button'
 import React from 'react'
 
 const ProfilePage = () => {
   return (
     <div className='flex justify-center'>
-    <UserButton/>
+      <UserButton />
     </div>
   )
 }

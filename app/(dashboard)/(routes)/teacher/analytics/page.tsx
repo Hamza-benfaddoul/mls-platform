@@ -1,14 +1,14 @@
 import { getAnalytics } from '@/actions/getAnalytics'
-import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import DataCard from './_components/DataCard'
 import Chart from './_components/Chart'
+import { currentUser } from '@/lib/auth'
 
 const Analytics = async () => {
-  const { userId } = auth()
-  if (!userId) return redirect('/sign-in')
-  const { data, totalRevenue, totalSales } = await getAnalytics(userId)
+  const user = await currentUser()
+
+  const { data, totalRevenue, totalSales } = await getAnalytics(user!.userId)
 
   return (
     <div className='p-6'>

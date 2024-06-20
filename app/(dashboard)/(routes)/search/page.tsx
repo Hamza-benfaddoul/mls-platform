@@ -3,9 +3,8 @@ import Categories from './_components/Categories'
 
 import SearchInput from '@/components/SearchInput'
 import { getCourses } from '@/actions/getCourses'
-import { auth } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation'
 import CoursesList from '@/components/CoursesList'
+import { currentUser } from '@/lib/auth'
 
 interface SearchProps {
   searchParams: {
@@ -15,11 +14,7 @@ interface SearchProps {
 }
 
 const Search = async ({ searchParams }: SearchProps) => {
-  const { userId } = auth()
-
-  if (!userId) {
-    return redirect('/sign-in')
-  }
+  const user = await currentUser();
 
   const categories = await db.category.findMany({
     orderBy: {
@@ -28,7 +23,7 @@ const Search = async ({ searchParams }: SearchProps) => {
   })
 
   const courses = await getCourses({
-    userId,
+    userId: user!.userId,
     ...searchParams,
   })
 

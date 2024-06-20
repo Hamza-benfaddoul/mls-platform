@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import {
   CircleDollarSign,
@@ -20,18 +19,15 @@ import ChaptersFrom from './_components/ChaptersFrom'
 import Banner from '@/components/banner'
 import CourseAction from './_components/CourseActions'
 import TrainingDetaisFrom from './_components/TrainingDetailsFrom'
+import { currentUser } from '@/lib/auth'
 
 const CourseId = async ({ params }: { params: { courseId: string } }) => {
-  const { userId } = auth()
-
-  if (!userId) {
-    redirect('/sign-in')
-  }
+  const user = await currentUser()
 
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,
-      userId,
+      userId: user!.userId,
     },
     include: {
       trainingDetails: {
@@ -62,8 +58,8 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
     course.description,
     course.imageUrl,
     course.price,
-/*     course.categoryId, */
-/*     course.chapters.some((chapter) => chapter.isPublished), */
+    /*     course.categoryId, */
+    /*     course.chapters.some((chapter) => chapter.isPublished), */
   ]
 
   const totalFields = requireFields.length
@@ -75,7 +71,10 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
   return (
     <>
       {!course.published && (
-        <Banner label='This course is not published. It will not be visible to students.' variant='warning' />
+        <Banner
+          label='This course is not published. It will not be visible to students.'
+          variant='warning'
+        />
       )}
       <div className='p-6'>
         {/*Info of completion fields*/}

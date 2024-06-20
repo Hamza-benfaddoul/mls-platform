@@ -1,18 +1,9 @@
-import { auth } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation'
-
 import { getDashboardCourses } from '@/actions/getDashboardCourses'
-import CoursesList from '@/components/CoursesList'
-import {
-  CheckCircle,
-  Clock5,
-  Fullscreen,
-  SquareDashedMousePointer,
-} from 'lucide-react'
+import { Clock5, Fullscreen, SquareDashedMousePointer } from 'lucide-react'
 import InfoCard from './_components/InfoCard'
 import Chart from './_components/Chart'
+import { currentUser } from '@/lib/auth'
 
-import { getAnalytics } from '@/actions/getAnalytics'
 const data = [
   {
     name: 'Monday',
@@ -58,14 +49,12 @@ const data = [
   },
 ]
 export default async function Dashboard() {
-  const { userId } = auth()
-
-  if (userId === null) redirect('/sign-in')
+  const user = await currentUser()
 
   /*   const { data} = await getAnalytics(userId); */
 
   const { completedCourses, coursesInProgress } =
-    await getDashboardCourses(userId)
+    await getDashboardCourses(user!.userId)
 
   return (
     <div className='p-6 space-y-4 '>
