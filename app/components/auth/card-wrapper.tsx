@@ -1,5 +1,7 @@
 'use client'
 
+import {cn} from '@/lib/utils'
+
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import Header from './header'
 import Social from './social'
@@ -12,6 +14,7 @@ interface CardWrapperProps {
   backButtonHref: string
   showSocial?: boolean
   headerTitle: string
+  className?: string
 }
 const CardWrapper = ({
   children,
@@ -20,15 +23,16 @@ const CardWrapper = ({
   backButtonHref,
   headerTitle,
   showSocial,
+  className,
 }: CardWrapperProps) => {
   return (
-    <Card className='w-[400px] shadow-md'>
+    <Card className={cn('w-[400px]', className)}>
       <CardHeader>
         <Header label={headerLabel} title={headerTitle} />
       </CardHeader>
       <CardContent>{children}</CardContent>
       {showSocial && (
-        <CardFooter >
+        <CardFooter>
           <Social />
         </CardFooter>
       )}

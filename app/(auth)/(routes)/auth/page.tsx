@@ -16,7 +16,7 @@ export default function Dashboard() {
           <div className='grid gap-2 text-center'>
             <h1 className='text-5xl text-primary font-bold'>Welcome Back</h1>
             <p className='text-balance text-muted-foreground'>
-              Enter your email below to login 
+              Enter your email below to login
             </p>
           </div>
           <div className='grid gap-4'>
@@ -39,12 +39,12 @@ export default function Dashboard() {
               Login
             </Button>
             <Button variant='outline' className='w-full'>
-            <FaGoogle className='mr-2'/>
+              <FaGoogle className='mr-2' />
               Login with Google
             </Button>
 
             <Button variant='outline' className='w-full'>
-            <FaFacebook className='mr-2'/>
+              <FaFacebook className='mr-2' />
               Login with Facebook
             </Button>
           </div>
@@ -56,6 +56,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
       <div className='hidden lg:block'>
         <Image
           src='/login.svg'

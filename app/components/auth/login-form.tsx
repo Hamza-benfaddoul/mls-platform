@@ -26,15 +26,21 @@ import { FormSuccess } from '../form-success'
 import { login } from '@/actions/login'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp'
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from '@/components/ui/input-otp'
 
 const LoginFrom = () => {
-  const searchParams = useSearchParams();
-  const urlError = searchParams.get("error") === 'OAuthAccountNotLinked'
-    ? 'Email alreay in use whith different profider' : ''
+  const searchParams = useSearchParams()
+  const urlError =
+    searchParams.get('error') === 'OAuthAccountNotLinked'
+      ? 'Email alreay in use whith different profider'
+      : ''
 
-
-  const [showTwoFactor, setShowTwoFactor] = useState<boolean>(false);
+  const [showTwoFactor, setShowTwoFactor] = useState<boolean>(false)
   const [error, setError] = useState<string | undefined>()
   const [success, setSuccess] = useState<string | undefined>()
 
@@ -56,18 +62,17 @@ const LoginFrom = () => {
       login(values)
         .then((data) => {
           if (data?.error) {
-            form.reset();
             setError(data.error)
           }
           if (data?.success) {
-            form.reset();
+            form.reset()
             setSuccess(data.success)
           }
           if (data?.twoFactor) {
-            setShowTwoFactor(true);
+            setShowTwoFactor(true)
           }
         })
-        .catch(() => setError('Something went wrong!'));
+        .catch(() => setError('Something went wrong!'))
     })
   }
 
@@ -78,21 +83,21 @@ const LoginFrom = () => {
       backButtonLabel="Don't have an account?"
       backButtonHref='/auth/register'
       showSocial={!showTwoFactor}
+      className='shadow-none border-none'
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
           <div className='space-y-4'>
             {showTwoFactor && (
-
               <FormField
                 control={form.control}
                 name='code'
                 render={({ field }) => (
-                  <FormItem >
+                  <FormItem>
                     <FormLabel>Two Factor Code</FormLabel>
-                    <FormControl >
+                    <FormControl>
                       <InputOTP maxLength={6} {...field}>
-                        < InputOTPGroup>
+                        <InputOTPGroup>
                           <InputOTPSlot index={0} />
                           <InputOTPSlot index={1} />
                           <InputOTPSlot index={2} />
@@ -145,10 +150,15 @@ const LoginFrom = () => {
                           type='password'
                         />
                       </FormControl>
-                      <Button className='px-0 font-normal' size='sm' variant='link' asChild>
+                      <FormMessage />
+                      <Button
+                        className='px-0 font-normal'
+                        size='sm'
+                        variant='link'
+                        asChild
+                      >
                         <Link href='/auth/reset'>Forgot password</Link>
                       </Button>
-                      <FormMessage />
                     </FormItem>
                   )}
                 />

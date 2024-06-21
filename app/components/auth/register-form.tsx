@@ -57,6 +57,7 @@ const RegisterForm = () => {
       backButtonLabel='Already have an account?'
       backButtonHref='/auth/login'
       showSocial
+      className='shadow-none border-none'
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>

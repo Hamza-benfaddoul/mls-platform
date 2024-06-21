@@ -1,6 +1,6 @@
+import { currentUser } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { stripe } from '@/lib/stripe'
-import { currentUser } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
@@ -9,9 +9,9 @@ export async function POST(
   { params }: { params: { courseId: string } },
 ) {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
 
-    if (!user || !user.id || !user.emailAddresses?.[0]?.emailAddress) {
+    if (!user || !user.userId || !user.email) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
@@ -22,7 +22,7 @@ export async function POST(
     const purchase = await db.purchase.findUnique({
       where: {
         userId_courseId: {
-          userId: user.id,
+          userId: user.userId,
           courseId: params.courseId,
         },
       },
@@ -57,11 +57,11 @@ export async function POST(
 
     if (!stripCustomer) {
       const customer = await stripe.customers.create({
-        email: user.emailAddresses?.[0]?.emailAddress,
+        email: user.email,
       })
       stripCustomer = await db.stripeCustomer.create({
         data: {
-          userId: user.id,
+          userId: user.userId,
           stripeCustomerId: customer.id,
         },
       })

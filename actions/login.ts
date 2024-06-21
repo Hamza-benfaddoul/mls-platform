@@ -24,18 +24,23 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
   const { email, password, code } = validatedFields.data
 
-  const existingUser = await getUserByEmail(email);
+  const existingUser = await getUserByEmail(email)
 
   if (!existingUser || !existingUser.email || !existingUser.password) {
     return { error: 'Email does not exist!' }
   }
 
   if (!existingUser.emailVerified) {
-    const verificationToken = await generateVerificationToken(existingUser.email);
-    await sendVerificationEmail(verificationToken.email, verificationToken.token)
-    return { success: "Confirmation email Sent!" }
+    const verificationToken = await generateVerificationToken(
+      existingUser.email,
+    )
+    await sendVerificationEmail(
+      verificationToken.email,
+      verificationToken.token,
+    )
+    return { success: 'Confirmation email Sent!' }
   }
-
+  /*
   if (existingUser.isTowFactorEnabled && existingUser.email) {
     if (code) {
       //TODO: Verify code
@@ -53,7 +58,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
         return { error: 'Code expired!' }
       }
 
-      await db.twoFactorToken.delete({
+       await db.twoFactorToken.delete({
         where: {
           id: twoFactorToken.id
         }
@@ -80,9 +85,9 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
         twoFactorToken.token,
       );
       return { twoFactor: true };
-    }
-
+    } 
   }
+*/
 
   try {
     await signIn('credentials', {
@@ -93,13 +98,13 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
-        case 'CredentialsSignin':
-          return { error: 'Invalid credentials!' }
+        case 'CallbackRouteError':
+          return { error: 'Password is worng!' }
         default:
           return { error: 'Something went wrong!' }
       }
     }
-    throw error;
+    throw error
   }
   return { success: 'Logged in!' }
 }

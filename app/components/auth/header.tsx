@@ -8,14 +8,16 @@ const font = Poppins({
 })
 
 interface HeaderProps {
-  title: string,
+  title: string
   label: string
 }
 
-const Header = ({ title, label}: HeaderProps) => {
+const Header = ({ title, label }: HeaderProps) => {
   return (
     <div className='flex w-full flex-col items-center justify-center gap-y-4'>
-      <h1 className={cn('text-3xl font-semibold', font.className)}>{title}</h1>
+      <h1 className={cn('text-3xl font-semibold text-primary', font.className)}>
+        {title}
+      </h1>
       <p className='text-sm text-muted-foreground'> {label}</p>
     </div>
   )

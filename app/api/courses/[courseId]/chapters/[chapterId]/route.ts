@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server'
 
 import Mux from '@mux/mux-node'
 
-import { auth } from '@clerk/nextjs/server'
 
 import { db } from '@/lib/db'
+import { currentUser } from '@/lib/auth';
 
 const mux = new Mux({
   tokenId: process.env.MUX_TOKEN_ID,
@@ -16,16 +16,16 @@ export async function DELETE(
   { params }: { params: { courseId: string; chapterId: string } },
 ) {
   try {
-    const { userId } = auth()
+    const user = await currentUser();
 
-    if (!userId) {
+    if (!user) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
     const courseOwner = await db.course.findUnique({
       where: {
         id: params.courseId,
-        userId: userId,
+        userId: user.userId,
       },
     })
 
@@ -96,17 +96,17 @@ export async function PATCH(
   { params }: { params: { courseId: string; chapterId: string } },
 ) {
   try {
-    const { userId } = auth()
+    const user = await currentUser();
     const { isPublished, ...values } = await req.json()
 
-    if (!userId) {
+    if (!user) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
     const courseOwner = await db.course.findUnique({
       where: {
         id: params.courseId,
-        userId: userId,
+        userId: user.userId,
       },
     })
 

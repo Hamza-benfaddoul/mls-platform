@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
 import { UserButton } from '@/app/components/auth/user-button'
-import {  redirect, usePathname } from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import { isTeacher } from '@/lib/teacher'
 
 import { Button } from '@/components/ui/button'
@@ -14,8 +14,8 @@ import { useCurrentUser } from '@/hooks/use-current-user'
 const NavbarRoutes = () => {
   const pathname = usePathname()
 
-  const user = useCurrentUser();
-  if(!user) return
+  const user = useCurrentUser()
+  if (!user) redirect('/auth/login')
 
   const isTeatcherPage = pathname?.startsWith('/teacher')
   const isStudentPage = pathname?.startsWith('/courses')

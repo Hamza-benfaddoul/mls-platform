@@ -1,24 +1,24 @@
-import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
 import { db } from '@/lib/db'
+import { currentUser } from '@/lib/auth'
 
 export async function PUT(
   req: Request,
   { params }: { params: { courseId: string } },
 ) {
   try {
-    const { userId } = auth()
+    const user = await currentUser();
     const { list } = await req.json()
 
-    if (!userId) {
+    if (!user) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
     const coureseOwner = await db.course.findUnique({
       where: {
         id: params.courseId,
-        userId: userId,
+        userId: user.userId,
       },
     })
 
