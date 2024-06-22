@@ -1,5 +1,4 @@
-import { UserButton } from '@/app/components/auth/user-button'
-import React from 'react'
+import { UserButton } from '@/components/auth/user-button'
 
 const ProfilePage = () => {
   return (

@@ -10,8 +10,6 @@ import {
   DropResult,
 } from '@hello-pangea/dnd'
 
-import { cn } from '@/lib/utils'
-
 import { Grip } from 'lucide-react'
 import TrainingFrom from './TrainingFrom'
 
@@ -77,18 +75,12 @@ const TrainingList = ({
               >
                 {(provided) => (
                   <div
-                    className={cn(
-                      'flex items-center gap-x-2 bg-sky-100  border border-sky-200 text-sky-700 rounded-md mb-4 text-sm ',
-                      'bg-sky-100 border-sky-200 text-sky-700',
-                    )}
+                    className='flex items-center gap-x-2 bg-sky-100  border border-sky-200 text-sky-700 rounded-md mb-4 text-sm '
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                   >
                     <div
-                      className={cn(
-                        'px-2   py-3 border-r border-r-slate-200 hover:bg-slate-300 rounded-l-md transition',
-                        'border-r-sky-200 hover:bg-sky-200',
-                      )}
+                      className='px-2 py-3 border-r rounded-l-md transition border-r-sky-200 hover:bg-sky-200'
                       {...provided.dragHandleProps}
                     >
                       <Grip className='w-5 h-5' />

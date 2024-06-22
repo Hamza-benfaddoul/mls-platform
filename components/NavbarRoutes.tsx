@@ -1,6 +1,6 @@
 'use client'
 
-import { UserButton } from '@/app/components/auth/user-button'
+import { UserButton } from '@/components/auth/user-button'
 import { redirect, usePathname } from 'next/navigation'
 import { isTeacher } from '@/lib/teacher'
 

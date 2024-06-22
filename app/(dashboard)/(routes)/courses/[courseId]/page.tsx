@@ -15,7 +15,7 @@ const CourseId = async ({
   params: { courseId: string; chapterId: string }
 }) => {
   const user = await currentUser()
-  if (!user) redirect('/sign-in')
+  if (!user) redirect('/auth/login')
 
   const {
     course,
@@ -33,8 +33,7 @@ const CourseId = async ({
         position: 'asc',
       },
     })
-  console.log(course)
-  if (!course) redirect('/')
+  if (!course) redirect('/courses')
 
   /*   const isLocked = !chapter.isFree && !purchase */
   /*   const completeOnEnd = !!purchase && !userProgress?.isCompleted */

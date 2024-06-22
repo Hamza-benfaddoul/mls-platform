@@ -14,8 +14,6 @@ import DescriptionForm from './_components/DescriptionForm'
 import ImageForm from './_components/ImageForm'
 import PriceForm from './_components/PriceFrom'
 import CategoryFrom from './_components/CategoryForm'
-import AttachmentFrom from './_components/AttachmentForm'
-import ChaptersFrom from './_components/ChaptersFrom'
 import Banner from '@/components/banner'
 import CourseAction from './_components/CourseActions'
 import TrainingDetaisFrom from './_components/TrainingDetailsFrom'
@@ -44,7 +42,7 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
   })
 
   if (!course) {
-    redirect('/')
+    redirect('/courses')
   }
 
   const categories = await db.category.findMany({
@@ -111,15 +109,7 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
               }))}
             />
           </div>
-          <div className='space-y-6'>
-            {/* <div>
-              <div className='flex items-center gap-x-2'>
-                <IconBadge icon={ListChecks} />
-                <h2 className='text-xl'>Course chapters</h2>
-              </div>
-              <ChaptersFrom initialData={course} courseId={course.id} />
-            </div> */}
-
+          <div className='space-y-6 '>
             <div>
               <div className='flex items-center gap-x-2'>
                 <IconBadge icon={ListChecks} />
@@ -133,13 +123,6 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
                 <h2 className='text-xl'>Sell your course</h2>
               </div>
               <PriceForm initialData={course} courseId={course.id} />
-            </div>
-            <div>
-              <div className='flex items-center gap-x-2'>
-                <IconBadge icon={File} />
-                <h2 className='text-xl'>Resources & Attachments</h2>
-              </div>
-              <AttachmentFrom initialData={course} courseId={course.id} />
             </div>
           </div>
         </div>
