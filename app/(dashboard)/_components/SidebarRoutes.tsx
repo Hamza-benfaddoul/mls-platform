@@ -23,7 +23,7 @@ const guestRoutes = [
   {
     icon: Tv2,
     label: 'AR/VR Training',
-    href: '/search',
+    href: '/courses',
   },
   {
     icon: UserRound,

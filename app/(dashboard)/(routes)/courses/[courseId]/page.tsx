@@ -3,54 +3,41 @@ import { db } from '@/lib/db'
 
 import Image from 'next/image'
 
-import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 import { getChapter } from '@/actions/getChapter'
-import Banner from '@/components/banner'
-import VideoPlayer from './_components/VideoPlayer'
-import CourseEnrollButton from './_components/CourseEnrollButton'
-import { Separator } from '@/components/ui/separator'
-import Preview from '@/components/preview'
-import { File, CirclePlay, Clock, WifiOff } from 'lucide-react'
-import CourseProgressButton from './_components/CourseProgressButton'
+import { CirclePlay, Clock, WifiOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { currentUser } from '@/lib/auth'
 
-const ChapterId = async ({
+const CourseId = async ({
   params,
 }: {
   params: { courseId: string; chapterId: string }
 }) => {
-  const user = await currentUser();
+  const user = await currentUser()
   if (!user) redirect('/sign-in')
 
   const {
     course,
-    /* chapter,
-    attachments,
-    nextChapter, 
-    userProgress,
-    purchase, */
   } = await getChapter({
     userId: user!.userId,
-/*     chapterId: params.chapterId, */
     courseId: params.courseId,
   })
 
-
-const trianingDetails: { property: string; value: string }[] =  await db.trainingDetails.findMany({
-    where: {
-      courseId: params.courseId,
-    },
-    orderBy: {
-      position: 'asc',
-    },
-  })
+  const trianingDetails: { property: string; value: string }[] =
+    await db.trainingDetails.findMany({
+      where: {
+        courseId: params.courseId,
+      },
+      orderBy: {
+        position: 'asc',
+      },
+    })
   console.log(course)
   if (!course) redirect('/')
 
-/*   const isLocked = !chapter.isFree && !purchase */
-/*   const completeOnEnd = !!purchase && !userProgress?.isCompleted */
+  /*   const isLocked = !chapter.isFree && !purchase */
+  /*   const completeOnEnd = !!purchase && !userProgress?.isCompleted */
 
   return (
     <div>
@@ -98,9 +85,9 @@ const trianingDetails: { property: string; value: string }[] =  await db.trainin
                 /> */}
                 <Button>Let's start</Button>
                 <Button variant='link' className='flex items-center'>
-                  <CirclePlay  className='w-5 h-5 mr-1'/>
+                  <CirclePlay className='w-5 h-5 mr-1' />
                   <span className='text-sm '>Watch preview</span>
-                  </Button>
+                </Button>
               </div>
               <p className='text-sm text-muted-foreground '>
                 {course.description}
@@ -130,4 +117,4 @@ const trianingDetails: { property: string; value: string }[] =  await db.trainin
   )
 }
 
-export default ChapterId
+export default CourseId

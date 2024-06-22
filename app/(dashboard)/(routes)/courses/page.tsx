@@ -14,7 +14,7 @@ interface SearchProps {
 }
 
 const Search = async ({ searchParams }: SearchProps) => {
-  const user = await currentUser();
+  const user = await currentUser()
 
   const categories = await db.category.findMany({
     orderBy: {

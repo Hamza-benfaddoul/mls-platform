@@ -34,9 +34,9 @@ const iconMap: Record<Category['name'], IconType> = {
 const Categories = ({ items }: CategoriesProps) => {
   const pathname = usePathname().slice(1);
   return (
-    <div className='flex capetalize items-center gap-x-2 overflow-x-auto pb-2'>
+    <div className='flex capitalaze items-center gap-x-2 overflow-x-auto pb-2'>
     {pathname}
-      {/* tems.map((item) => (
+      {/* items.map((item) => (
         <CategoryItem
           key={item.id}
           label={item.name}

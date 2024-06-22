@@ -1,7 +1,7 @@
 import './globals.css'
 
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins} from 'next/font/google'
 
 import ToastProvider from '@/components/providers/toaster-provider'
 import { ConfettiProvider } from '@/components/providers/confetti-proviter'
@@ -9,7 +9,10 @@ import { ConfettiProvider } from '@/components/providers/confetti-proviter'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/auth'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Poppins({
+  weight: ['100', '300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -29,7 +32,7 @@ export default async function RootLayout({
         <head>
           <link rel='shortcut icon' href='/favicon.ico' />
         </head>
-        <body className={inter.className}>
+        <body className={font.className}>
           <ConfettiProvider />
           <ToastProvider />
           {children}

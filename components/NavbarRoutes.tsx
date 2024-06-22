@@ -19,7 +19,7 @@ const NavbarRoutes = () => {
 
   const isTeatcherPage = pathname?.startsWith('/teacher')
   const isStudentPage = pathname?.startsWith('/courses')
-  const isSearchPage = pathname == '/search'
+  const isSearchPage = pathname == '/courses'
 
   return (
     <div className='flex w-full items-center justify-between '>
