@@ -1,4 +1,3 @@
-import { Session, User } from 'next-auth';
 import { useSession } from 'next-auth/react'
 
 export const useCurrentUser = () => {
