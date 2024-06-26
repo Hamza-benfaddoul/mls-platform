@@ -40,18 +40,9 @@ const CourseId = async ({
 
   return (
     <div>
-      <div className='felx bg-gray-200  flex-col max-w-7xl mx-auto pb-20'>
+      <div className='felx flex-col  mx-auto pb-20'>
         <div className='w-full grid grid-cols-1 lg:grid-cols-2'>
-          <div className='p-4   '>
-            {/*<VideoPlayer 
-              chapterId={params.chapterId}
-              title={chapter.title}
-              courseId={params.courseId}
-              nextChapterId={nextChapter?.id}
-              playbackId={muxData?.playbackId!}
-              completeOnEnd={completeOnEnd}
-              isLocked={isLocked}
-            /> */}
+          <div className='p-4 '>
             <Image
               src={course?.imageUrl || '/courseImage.png'}
               width={450}
@@ -61,34 +52,30 @@ const CourseId = async ({
             />
           </div>
           <div>
-            <div className='p-4 grid grid-rows-4 gap-y-2'>
-              <h2 className='text-2xl font-semibold mb-2 capitalize '>
-                {course.title}
-              </h2>
-              <div className='flex gap-x-4  '>
-                <span className='flex items-center gap-x-1'>
-                  <Clock className='h-5 w-5  text-muted-foreground' />
-                  15 min
-                </span>
-                <span className='flex items-center gap-x-1'>
-                  <WifiOff className='h-5 w-5 text-muted-foreground' />
-                  No internet required
-                </span>
+            <div className='flex p-4 flex-col'>
+              <div className='grid grid-rows-3 gap-y-1 '>
+                <h2 className='text-2xl font-semibold mt-4 capitalize'>
+                  {course.title}
+                </h2>
+                <div className='flex gap-x-4 '>
+                  <span className='flex items-center gap-x-1'>
+                    <Clock className='h-5 w-5  text-muted-foreground' />
+                    15 min
+                  </span>
+                  <span className='flex items-center gap-x-1'>
+                    <WifiOff className='h-5 w-5 text-muted-foreground' />
+                    No internet required
+                  </span>
+                </div>
+                <div className='flex w-full items-center gap-x-3'>
+                  <Button>Let&aposs start</Button>
+                  <Button variant='link' className='flex items-center'>
+                    <CirclePlay className='w-5 h-5 mr-1' />
+                    <span className='text-sm '>Watch preview</span>
+                  </Button>
+                </div>
               </div>
-              <div className='flex w-full items-center gap-x-3  '>
-                {/* <CourseProgressButton
-                  chapterId={params.chapterId}
-                  courseId={params.courseId}
-                  isCompleted={!!userProgress?.isCompleted}
-                  nextChapterId={nextChapter?.id}
-                /> */}
-                <Button>Let's start</Button>
-                <Button variant='link' className='flex items-center'>
-                  <CirclePlay className='w-5 h-5 mr-1' />
-                  <span className='text-sm '>Watch preview</span>
-                </Button>
-              </div>
-              <p className='text-sm text-muted-foreground '>
+              <p className='text-sm flex-1 mt-4 text-muted-foreground '>
                 {course.description}
               </p>
             </div>

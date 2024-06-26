@@ -3,8 +3,13 @@ import { db } from '@/lib/db'
 import { currentUser } from '@/lib/auth'
 
 export async function PATCH(
+  req: Request,
   { params }: { params: { courseId: string } },
 ) {
+
+    console.log(
+      'hamza', params.courseId
+    )
   try {
     const user = await currentUser();
 

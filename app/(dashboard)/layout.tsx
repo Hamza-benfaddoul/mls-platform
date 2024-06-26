@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       {/* Main Content */}
-      <main className='lg:pl-72 bg-gray-200 overflow-y-auto h-full pt-[80px] '>
+      <main className='lg:pl-72 bg-slate-100 overflow-y-auto h-full pt-[80px] '>
         {children}
       </main>
     </div>

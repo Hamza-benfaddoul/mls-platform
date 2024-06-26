@@ -21,15 +21,13 @@ import { Textarea } from '@/components/ui/textarea'
 import axios from 'axios'
 
 interface TrainingFromProps {
-  property: string
   value: string
   courseId: string
   id: string
-  
+  property: string
 }
 
-const TrainingFrom = ({id, courseId, property, value }: TrainingFromProps) => {
-  console.log(property, value)
+const TrainingFrom = ({ id, courseId, property, value }: TrainingFromProps) => {
   const router = useRouter()
 
   const [propertyDetails, setPropertyDetails] = useState(property)
@@ -63,7 +61,7 @@ const TrainingFrom = ({id, courseId, property, value }: TrainingFromProps) => {
         <DialogHeader>
           <DialogTitle>Edit Training Detail</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&aposre done.
           </DialogDescription>
         </DialogHeader>
 

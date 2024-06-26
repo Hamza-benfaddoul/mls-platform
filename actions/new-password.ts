@@ -45,9 +45,9 @@ export const newPassword = async (values: z.infer<typeof NewPasswordSchema>, tok
     }
   })
 
-  await db.passwordResetToken.delete({
-    where: { id: existingToken.id }
-  })
+  // await db.passwordResetToken.delete({
+  //    where: { id: existingToken.id }
+  // })
 
 
   return { success: 'Password updated!' }

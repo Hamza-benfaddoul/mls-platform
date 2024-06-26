@@ -115,7 +115,7 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
                 <IconBadge icon={ListChecks} />
                 <h2 className='text-xl'>Training Detais</h2>
               </div>
-              <TrainingDetaisFrom initialData={course} courseId={course.id} />
+              <TrainingDetaisFrom initialData={course.trainingDetails} courseId={course.id} />
             </div>
             <div>
               <div className='flex items-center gap-x-2'>

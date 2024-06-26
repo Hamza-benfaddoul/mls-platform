@@ -48,6 +48,7 @@ const CourseAction = ({
         )
         toast.success('Course unpublished')
       } else {
+        console.log(courseId)
         await axios.patch(
           `/api/courses/${courseId}/publish`,
         )
