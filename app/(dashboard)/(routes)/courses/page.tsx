@@ -5,6 +5,7 @@ import SearchInput from '@/components/SearchInput'
 import { getCourses } from '@/actions/getCourses'
 import CoursesList from '@/components/CoursesList'
 import { currentUser } from '@/lib/auth'
+import { redirect } from 'next/navigation'
 
 interface SearchProps {
   searchParams: {
@@ -15,6 +16,7 @@ interface SearchProps {
 
 const Search = async ({ searchParams }: SearchProps) => {
   const user = await currentUser()
+  if (!user) redirect('/auth/login')
 
   const categories = await db.category.findMany({
     orderBy: {
@@ -23,7 +25,7 @@ const Search = async ({ searchParams }: SearchProps) => {
   })
 
   const courses = await getCourses({
-    userId: user!.userId,
+    userId: user.userId,
     ...searchParams,
   })
 

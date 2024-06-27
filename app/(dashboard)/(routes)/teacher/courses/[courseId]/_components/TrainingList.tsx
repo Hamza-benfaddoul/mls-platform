@@ -89,10 +89,8 @@ const TrainingList = ({
 
                     <div className='ml-auto pr-2 flex items-center gap-x-2'>
                       <TrainingFrom
-                        id={chapter.id}
                         courseId={courseId}
-                        property={chapter.property}
-                        value={chapter.value}
+                        initialData={chapter}
                       />
                     </div>
                   </div>

@@ -22,20 +22,19 @@ import { currentUser } from '@/lib/auth'
 const CourseId = async ({ params }: { params: { courseId: string } }) => {
   const user = await currentUser()
 
+  if (!user) {
+    redirect('/auth/login')
+  }
+
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,
-      userId: user!.userId,
+      userId: user.userId,
     },
     include: {
       trainingDetails: {
         orderBy: {
           position: 'asc',
-        },
-      },
-      attachments: {
-        orderBy: {
-          createdAt: 'desc',
         },
       },
     },
@@ -115,7 +114,7 @@ const CourseId = async ({ params }: { params: { courseId: string } }) => {
                 <IconBadge icon={ListChecks} />
                 <h2 className='text-xl'>Training Detais</h2>
               </div>
-              <TrainingDetaisFrom initialData={course.trainingDetails} courseId={course.id} />
+              <TrainingDetaisFrom initialData={course} courseId={course.id} />
             </div>
             <div>
               <div className='flex items-center gap-x-2'>

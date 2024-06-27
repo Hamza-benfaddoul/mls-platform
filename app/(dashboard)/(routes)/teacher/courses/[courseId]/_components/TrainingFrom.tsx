@@ -16,36 +16,29 @@ import { useState } from 'react'
 
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import { Chapter } from '@prisma/client'
+import { TrainingDetails } from '@prisma/client'
 import { Textarea } from '@/components/ui/textarea'
 import axios from 'axios'
 
 interface TrainingFromProps {
-  value: string
+  initialData: TrainingDetails
   courseId: string
-  id: string
-  property: string
 }
 
-const TrainingFrom = ({ id, courseId, property, value }: TrainingFromProps) => {
+const TrainingFrom = ({ initialData, courseId }: TrainingFromProps) => {
   const router = useRouter()
 
-  const [propertyDetails, setPropertyDetails] = useState(property)
-  const [valueDetails, setValueDetails] = useState(value)
+  const [propertyDetails, setPropertyDetails] = useState(initialData.property)
+  const [valueDetails, setValueDetails] = useState(initialData.value)
 
-  const [isCreating, setCreating] = useState(false)
-  const [isUpdating, setUpdating] = useState(false)
-
-  const toggleCreating = () => setCreating((current) => !current)
   const onSubmit = async () => {
     try {
       await axios.put(`/api/courses/${courseId}/trainingDetails`, {
-        id: id,
+        id: initialData.id,
         property: propertyDetails,
         value: valueDetails,
       })
       toast.success('Training Detais Updated')
-      toggleCreating()
       router.refresh()
     } catch {
       toast.error('Something went worng')

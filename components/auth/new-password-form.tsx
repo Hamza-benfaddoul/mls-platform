@@ -24,7 +24,7 @@ import { FormError } from '../form-error'
 import { FormSuccess } from '../form-success'
 
 import { useSearchParams } from 'next/navigation'
-import { newPassword } from '@/actions/new-password'
+/* import { newPassword } from '@/actions/new-password' */
 
 const NewPasswordForm = () => {
 
@@ -47,15 +47,16 @@ const NewPasswordForm = () => {
     setSuccess('')
 
     startTransition(() => {
-      newPassword(values, token).then((data) => {
+      /* newPassword(values, token).then((data) => {
         setError(data.error)
         setSuccess(data.success)
-      })
+      }) */
     })
   }
 
   return (
     <CardWrapper
+      headerTitle='New password'
       headerLabel='Enter a new password'
       backButtonLabel="Back to login"
       backButtonHref='/auth/login'

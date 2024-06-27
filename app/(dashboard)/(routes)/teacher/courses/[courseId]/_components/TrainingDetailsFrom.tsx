@@ -19,13 +19,13 @@ import { Button } from '@/components/ui/button'
 import { Loader2, PlusCircle } from 'lucide-react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Chapter, Course } from '@prisma/client'
+import { Course, TrainingDetails } from '@prisma/client'
 import { Input } from '@/components/ui/input'
 import TrainingList from './TrainingList'
 import { Textarea } from '@/components/ui/textarea'
 
 interface TrainingDetaisFromProps {
-  initialData: Course & { trainingDetails: [] }
+  initialData: Course & { trainingDetails: TrainingDetails[] }
   courseId: string
 }
 

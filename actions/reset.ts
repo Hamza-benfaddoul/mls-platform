@@ -1,4 +1,4 @@
-'use server'
+/*'use server'
 
 import * as z from 'zod'
 
@@ -32,3 +32,4 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
 
   return { success: 'Reset email sent!' }
 }
+*/

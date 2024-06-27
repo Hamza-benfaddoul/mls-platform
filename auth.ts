@@ -5,14 +5,14 @@ declare module "next-auth" {
   interface Session {
     user: {
       userId: string
-/*       role: UserRole; */
+      /*       role: UserRole; */
     } & DefaultSession["user"];
   }
 }
 
 declare module "@auth/core/jwt" {
   interface JWT {
-/*     role?: UserRole */
+    /*     role?: UserRole */
   }
 }
 
@@ -22,7 +22,7 @@ import { getUserById } from '@/data/user'
 import { db } from '@/lib/db'
 import authConfig from '@/auth.config'
 
-import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation';
+// import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation';
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   pages: {
@@ -55,7 +55,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       }
 
       if (token.role && session.user) {
-        session.user.role = token.role
+        //         session.user.role = token.role
       }
       return session
     },

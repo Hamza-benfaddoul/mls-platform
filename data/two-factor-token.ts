@@ -1,3 +1,4 @@
+/*
 import { db } from "@/lib/db";
 import { generateVerificationToken } from "./tokens";
 
@@ -25,3 +26,4 @@ export const getTwoFactorTokenByEmail = async (email: string) => {
     return null;
   }
 }
+*/

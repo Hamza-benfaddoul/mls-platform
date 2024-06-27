@@ -1,4 +1,4 @@
-'use server'
+/*'use server'
 
 import * as z from 'zod'
 import bcrypt from 'bcryptjs'
@@ -52,4 +52,4 @@ export const newPassword = async (values: z.infer<typeof NewPasswordSchema>, tok
 
   return { success: 'Password updated!' }
 }
-
+*/
