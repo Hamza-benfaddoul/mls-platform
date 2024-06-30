@@ -1,12 +1,10 @@
 'use client';
 
-import CardWrapper from '@/components/auth/card-wrapper'
-import { UserButton } from '@/components/auth/user-button'
 
 import { useState, useTransition } from 'react'
 
 import * as z from 'zod'
-import { RegisterSchema } from '@/schemas'
+import { UpdateSchema } from '@/schemas'
 
 import { Input } from '@/components/ui/input'
 
@@ -24,33 +22,41 @@ import { Button } from '@/components/ui/button'
 import { FormError } from '@/components/form-error';
 import { FormSuccess } from '@/components/form-success';
 
-import { register } from '@/actions/register'
+import { update } from '@/actions/update';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Header from '@/components/auth/header';
+import { useCurrentUser } from '@/hooks/use-current-user';
+import { useSession } from 'next-auth/react';
 
 
 const ProfilePage = () => {
+  const user = useCurrentUser();
+  const { update: updateSession } = useSession()
+
 
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
 
-  const form = useForm<z.infer<typeof RegisterSchema>>({
-    resolver: zodResolver(RegisterSchema),
+  const form = useForm<z.infer<typeof UpdateSchema>>({
+    resolver: zodResolver(UpdateSchema),
     defaultValues: {
-      email: '',
-      password: '',
+      name: user?.name!,
+      email: user?.email!,
     },
   })
 
-  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
+  const onSubmit = (values: z.infer<typeof UpdateSchema>) => {
+    console.log('hello', values);
     setError('')
     setSuccess('')
 
     startTransition(() => {
-      register(values).then((data) => {
+      update(values, user?.userId!).then((data) => {
         setError(data.error)
         setSuccess(data.success)
+        updateSession()
+
       })
     })
   }
@@ -101,47 +107,11 @@ const ProfilePage = () => {
                   )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name='password'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          disabled={isPending}
-                          placeholder='******'
-                          type='password'
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
 
-                <FormField
-                  control={form.control}
-                  name='password'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Conform password</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          disabled={isPending}
-                          placeholder='******'
-                          type='password'
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
               </div>
               <FormError message={error} />
               <FormSuccess message={success} />
-              <Button type='submit' disabled={isPending} className='w-full'>
+              <Button type='submit' className='w-full'>
                 Update profile
               </Button>
             </form>

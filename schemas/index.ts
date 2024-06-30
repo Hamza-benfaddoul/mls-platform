@@ -28,3 +28,8 @@ export const RegisterSchema = z.object({
     }),
   name: z.string().min(1, { message: 'Name is required' }),
 })
+
+export const UpdateSchema = z.object({
+  email: z.string().email({ message: 'Email is required' }),
+  name: z.string().min(1, { message: 'Name is required' }),
+})
